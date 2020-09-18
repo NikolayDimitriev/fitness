@@ -38,6 +38,18 @@ const togglePopUp = () => {
         } else if (target.closest('.overlay')) {
             target.closest('.popup-active').classList.remove('popup-active');
         }
+
+
+        //Скрипт для плавной прокрутки
+        if (target.closest('.scroll') || target.closest('#totop')) {
+            e.preventDefault();
+
+            const blockId = target.getAttribute('href') || target.parentNode.getAttribute('href');
+            document.querySelector(`${blockId}`).scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
     });
 };
 
